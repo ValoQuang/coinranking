@@ -25,7 +25,7 @@ const News = ({ simplified }) => {
   // query looks like this /news/search?q=${newsCategory}&safeSearch=Off&textFormat=Raw&freshness=Day&count=${count}
   // useState update that newsCategory
   // then filterOption filter out the options (option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0})
-  
+
   if (!cryptoNews?.value) return <Loader />;
   return (
     <>
@@ -40,6 +40,7 @@ const News = ({ simplified }) => {
               onChange={(value) => setNewsCategory(value)}
               filterOption={(input, option) => option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
             >
+
                <Option value="Cryptocurency">Cryptocurrency</Option>
                {/*Note, data below belongs to Crypto API fetching request*/}
                {data?.data?.coins?.map((currency) => <Option value={currency.name}>{currency.name}</Option>)}
