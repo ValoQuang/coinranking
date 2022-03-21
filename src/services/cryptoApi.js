@@ -1,4 +1,3 @@
-import axios from "axios";
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 //Redux toolkit simplify redux work.
@@ -20,7 +19,7 @@ export const cryptoApi = createApi({
   //fetch data from the endpoints
   endpoints: (builder)=> ({
     getCryptos: builder.query({
-      query: () => createRequest('/coins')
+      query: (count) => createRequest(`/coins?limit=${count}`)
     })
   })
 })

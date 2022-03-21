@@ -7,17 +7,31 @@ import { useGetCryptosQuery } from '../services/cryptoApi';
 import Loader from './Loader';
 
 const Cryptocurrencies = ({ simplified }) => {
-  
-  const {data:cryptosList, isFetching} = useGetCryptosQuery();
-  const [cryptos, setCryptos] = useState(cryptosList?.data.coins)
-  console.log(cryptos)
+  const count = simplified ? 10: 100;
+  const {data:cryptosList, isFetching} = useGetCryptosQuery(count);
+  const [cryptos, setCryptos] = useState([]);
+  const [searchTerm, setSearchTerm] = useState('')
+
+  useEffect(()=>{
+    setCryptos(cryptosList?.data?.coins)
+    const filteredData = cryptosList?.data?.coins.filter((item)=> item.name.toLowerCase().includes(searchTerm))
+    setCryptos(filteredData)
+  },[cryptosList,searchTerm])
+
+  //console.log(cryptosList)
 
   if (isFetching) return <Loader />;
   return (
     <>
+      {/*if not simplified(the prop in Cryptocurrencies in the homepage components), then hide it, show it in cryptocurrencies component only*/}
+      {!simplified && (
+        <div className='search-crypto'>
+           <Input placeholder='Search cryptos' onChange={(e)=> setSearchTerm(e.target.value)}/>
+        </div>
+      )}
+     
       <Row gutter={[32,32]} className='crypto-card-container'>
-        {/*cryptos become list of currencies then use map to roll over the objects and get info we want*/}
-        {cryptos.map((currency)=>(
+        {cryptos?.map((currency)=>(
           <Col xs={24}
                sm={12}
                lg={6}
