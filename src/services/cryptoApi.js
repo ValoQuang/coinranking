@@ -1,5 +1,5 @@
 import axios from "axios";
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query'
+import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 //Redux toolkit simplify redux work.
 const cryptoApiHeaders = {
@@ -7,7 +7,7 @@ const cryptoApiHeaders = {
     'x-rapidapi-key': '72fd21d9bdmsh94dd23e44548b09p1e33e4jsneea1f179badc'
 }
 
-const baseUrl = 'https://coinranking1.p.rapidapi.com/coin/Qwsogvtv82FCd'
+const baseUrl = 'https://coinranking1.p.rapidapi.com'
 
 const createRequest = (url) => ({
   url, headers: cryptoApiHeaders
@@ -20,8 +20,9 @@ export const cryptoApi = createApi({
   //fetch data from the endpoints
   endpoints: (builder)=> ({
     getCryptos: builder.query({
-      query: createRequest('/exchanges')
+      query: () => createRequest('/coins')
     })
   })
 })
 
+export const {useGetCryptosQuery} = cryptoApi;
