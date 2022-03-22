@@ -18,7 +18,7 @@ const News = ({ simplified }) => {
     newsCategory,
     count: simplified ? 10 : 100,
   });
-  console.log(cryptoNews);
+  //console.log(cryptoNews);
 
   //Main logic: fetching data from Crypto News API from Bings
   // Inside Select component onChange func set the search Term (search Term contained in API news query)
