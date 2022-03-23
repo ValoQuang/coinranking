@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import HTMLReactParser from "html-react-parser";
+import HTMLReactParser from "html-react-parser"; //The parser converts an HTML string to one or more React elements.  
 import { useParams } from "react-router-dom"; //return object of key pairs of URL params. Use it to access match.params of the current <Route>
 import millify from "millify";
 import { Col, Row, Typography, Select } from "antd";
-import {
-  useGetCryptoDetailsQuery,
-  useGetCryptoHistoryQuery,
-} from "../services/cryptoApi";
+import {useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} from "../services/cryptoApi";
 
 import {
   MoneyCollectOutlined,
@@ -30,6 +27,7 @@ const CryptoDetails = () => {
   //the coinId takes uuid property, implemented in Cryptocurrencies component
   const [timePeriod, setTimePeriod] = useState("7d");
   const { data, isFetching } = useGetCryptoDetailsQuery(coinId);
+  const { data: coinHistory } = useGetCryptoHistoryQuery({coinId, timePeriod});
   console.log(data);
 
   const cryptoDetails = data?.data?.coin;
@@ -124,7 +122,7 @@ const CryptoDetails = () => {
           <Option key={date}>{date}</Option>
         ))}
       </Select>
-
+          <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistic-heading">

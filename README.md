@@ -10,6 +10,9 @@ The project where I learned how to use React Js, styling with TailWind CSS. For 
 + Javascript  
 + Antd
 + Redux Toolkit
++ React-chartjs-2 npm 
++ Millify  
+
 
 # Back-end:
 + Rapid API hubs with Coin ranking API, Bing news API

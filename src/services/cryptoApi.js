@@ -16,15 +16,18 @@ const createRequest = (url) => ({
 export const cryptoApi = createApi({
   reducerPath: 'cryptoApi',
   baseQuery: fetchBaseQuery({baseUrl} ),
-  //fetch data from the endpoints
+  //fetch data from the endpoints, Redux Toolkit makes it easier bcuz u only need to add endpoints
   endpoints: (builder)=> ({
     getCryptos: builder.query({
       query: (count) => createRequest(`/coins?limit=${count}`)
     }),
     getCryptoDetails: builder.query({
       query: (coinId) => createRequest(`/coin/${coinId}`),
-    })
+    }),
+    getCryptoHistory: builder.query({
+      query: ({coinId, timePeriod}) => createRequest(`/coin/${coinId}/history/${timePeriod}`),
+    }),
   })
 })
 
-export const {useGetCryptosQuery, useGetCryptoDetailsQuery} = cryptoApi;
+export const {useGetCryptosQuery, useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} = cryptoApi;
