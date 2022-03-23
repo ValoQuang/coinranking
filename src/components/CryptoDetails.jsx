@@ -122,7 +122,7 @@ const CryptoDetails = () => {
           <Option key={date}>{date}</Option>
         ))}
       </Select>
-      
+        
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistic-heading">
