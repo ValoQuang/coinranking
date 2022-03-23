@@ -7,7 +7,6 @@ import {
   Navbar,
   News,
   CryptoDetails,
-  Exchanges,
 } from "./components";
 
 import "./App.css";
@@ -25,10 +24,6 @@ const App = () => {
             <Switch>
               <Route exact path="/">
                 <Homepage />
-              </Route>
-              <Route exact path="/exchanges">
-                {" "}
-                <Exchanges />{" "}
               </Route>
               <Route exact path="/cryptocurrencies">
                 <Cryptocurrencies />
@@ -49,8 +44,8 @@ const App = () => {
             style={{ color: "white", textAlign: "center" }}
           >
             Copyright © 2022
-            <Link to="/">Cryptoverse Inc.</Link> <br />
-            All Rights Reserved.
+            <Link to="/">Made by Quang.</Link> <br />
+            For educational purpose
           </Typography.Title>
           <Space>
             <Link to="/">Home</Link>

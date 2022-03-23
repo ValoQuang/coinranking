@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom"; //return object of key pairs of UR
 import millify from "millify";
 import { Col, Row, Typography, Select } from "antd";
 import {useGetCryptoDetailsQuery, useGetCryptoHistoryQuery} from "../services/cryptoApi";
+import Chart from 'chart.js/auto'
 
 import {
   MoneyCollectOutlined,
@@ -122,7 +123,7 @@ const CryptoDetails = () => {
           <Option key={date}>{date}</Option>
         ))}
       </Select>
-        
+        <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails?.price)} coinName={cryptoDetails?.name} />
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistic-heading">
@@ -189,8 +190,10 @@ const CryptoDetails = () => {
             </Row>
           ))}
         </Col>
+        
       </Col>
     </Col>
+   
   );
 };
 
