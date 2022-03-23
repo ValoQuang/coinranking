@@ -42,8 +42,8 @@ const CryptoDetails = () => {
     },
     { title: "Rank", value: cryptoDetails?.rank, icon: <NumberOutlined /> },
     {
-      title: "24h Volume",
-      value: `$ ${cryptoDetails?.volume && millify(cryptoDetails?.volume)}`,
+      title: "Change",
+      value: `$ ${cryptoDetails?.change && millify(cryptoDetails?.change)}`,
       icon: <ThunderboltOutlined />,
     },
     {
@@ -122,7 +122,7 @@ const CryptoDetails = () => {
           <Option key={date}>{date}</Option>
         ))}
       </Select>
-          <LineChart coinHistory={coinHistory} currentPrice={millify(cryptoDetails.price)} coinName={cryptoDetails.name}/>
+      
       <Col className="stats-container">
         <Col className="coin-value-statistics">
           <Col className="coin-value-statistic-heading">

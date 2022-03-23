@@ -24,8 +24,8 @@ const Homepage = () => {
       <Row>
         <Col span={12}><Statistic title="Total Coins" value={globalStats.totalCoins}/></Col>
         <Col span={12}><Statistic title="Total Exchanges" value={globalStats.totalExchanges}/></Col>
-        <Col span={12}><Statistic title="Total Market Cap" value={globalStats.totalMarketCap}/></Col>
-        <Col span={12}><Statistic title="Total 24h Volume" value={globalStats.total24hVolume}/></Col>
+        <Col span={12}><Statistic title="Total Market Cap" value={millify(globalStats.totalMarketCap)}/></Col>
+        <Col span={12}><Statistic title="Total 24h Volume" value={millify(globalStats.total24hVolume)}/></Col>
         <Col span={12}><Statistic title="Total Market" value={globalStats.totalMarkets}/></Col>
       </Row>
       {/* display button to crypto detail component */}
