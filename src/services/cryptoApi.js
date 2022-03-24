@@ -2,11 +2,9 @@ import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
 
 //Redux toolkit simplify redux work.
 const cryptoApiHeaders = {
-    'x-rapidapi-host': 'coinranking1.p.rapidapi.com',
-    'x-rapidapi-key': '72fd21d9bdmsh94dd23e44548b09p1e33e4jsneea1f179badc',
+    'x-rapidapi-host': process.env.CRYPTO_URL,
+    'x-rapidapi-key': process.env.CRYPTO_API_KEY,
 }
-
-const baseUrl = 'https://coinranking1.p.rapidapi.com'
 
 const createRequest = (url) => ({
   url, headers: cryptoApiHeaders
@@ -15,7 +13,7 @@ const createRequest = (url) => ({
 //note: endpoints is the endpoints of the API 
 export const cryptoApi = createApi({
   reducerPath: 'cryptoApi',
-  baseQuery: fetchBaseQuery({baseUrl} ),
+  baseQuery: fetchBaseQuery(process.env.CRYPTO_URL),
   //fetch data from the endpoints, Redux Toolkit makes it easier bcuz u only need to add endpoints
   endpoints: (builder)=> ({
     getCryptos: builder.query({
